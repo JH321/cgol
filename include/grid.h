@@ -1,24 +1,27 @@
 #include <iostream>
-#include <forward_list>
+#include <unordered_set>
 #include <vector>
 
 #define GRIDSIZE 100
 
+struct pair_hash
+{
+    size_t operator()(const std::pair<size_t, size_t>& hashObj) const
+    {
+        return hashObj.first * 31 + hashObj.second;
+    }
+};
+
 class grid
 {
     private:
-        struct cell
-        {
-            size_t x;
-            size_t y;
-        };
 
-        std::forward_list<cell> alive_cells;
+        std::unordered_set<std::pair<size_t, size_t>, pair_hash> alive_cells;
         int neighbor_grid[GRIDSIZE][GRIDSIZE];
 
         void update_neighbors();
         void update_alive_cells();
-        
+        void zero_neighbor_grid();
     
     public:
 

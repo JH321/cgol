@@ -30,6 +30,8 @@ class grid
         void update_cells();
         bool is_alive_cell(size_t x, size_t y);
 
+        void print_grid();
+
         
         
 };

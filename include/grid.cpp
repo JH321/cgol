@@ -121,3 +121,16 @@ bool grid::is_alive_cell(size_t x, size_t y)
 {
     return alive_cells.count(std::make_pair(x, y)) > 0;
 }
+
+void grid::print_grid()
+{
+    for(size_t i = 0; i < GRIDSIZE; ++i)
+    {
+        for(size_t j = 0; j < GRIDSIZE; ++j)
+        {
+            std::cout << (is_alive_cell(i, j)) ? "x" : "o";
+        }
+        std::cout << std::endl;
+    }
+    
+}

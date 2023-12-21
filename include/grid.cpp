@@ -109,3 +109,15 @@ void grid::update_alive_cells()
 
     alive_cells.swap(temp_cells);
 }
+
+
+void grid::update_cells()
+{
+    update_neighbors();
+    update_alive_cells();
+}
+
+bool grid::is_alive_cell(size_t x, size_t y)
+{
+    return alive_cells.count(std::make_pair(x, y)) > 0;
+}
